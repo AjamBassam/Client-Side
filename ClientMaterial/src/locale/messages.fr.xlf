@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en-US" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="welcome" datatype="html">
+        <source>Hello, world!</source>
+        <target>Bonjour le monde</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="sampleText" datatype="html">
+        <source>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to
+      featured content or information.</source>
+        <target>C'est une une simple unite d'heor, une style simple de jombotron ... </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/home/home.component.html</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mylifeproject" datatype="html">
+        <source>MyLifeProject</source>
+        <target>mon projet de vie </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">src/app/sections/header/header.component.html</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
