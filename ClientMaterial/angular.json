@@ -20,7 +20,7 @@
           "options": {
             "localize": false,
             "aot": true,
-            "outputPath": "dist/",
+            "outputPath": "dist/ClientMaterial",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
