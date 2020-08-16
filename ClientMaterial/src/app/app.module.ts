@@ -50,7 +50,7 @@ import { AvoidAccessGuard, AccessGuard } from "./controllers/guards/access.guard
     })
   ],
   providers: [
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     WebsocketService, RestApiService, UserService, VehicleService, LocationService,
     UserResolve, VehicleRentalsResolve, VehicleResolve,
     AccessGuard, AvoidAccessGuard,

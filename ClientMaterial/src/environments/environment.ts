@@ -8,9 +8,9 @@ const vehicule = "vehicule";
 export const env = {
   production: false,
   CLIENT_URL: "http://localhost:4200",
-  // SERVER_URL: "",
-  SERVER_URL: "ec2-52-14-90-146.us-east-2.compute.amazonaws.com:3000",
-  // SERVER_URL: "52.14.90.146:3000",
+  SERVER_URL: "http://localhost:3000",
+  // SERVER_URL: "ec2-18-188-222-146.us-east-2.compute.amazonaws.com:3000",
+
   // routes
   REGISTER: {
     en: "register",

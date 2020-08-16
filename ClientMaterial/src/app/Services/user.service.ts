@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { User, IUser } from '../models/userModel';
 import { env } from 'src/environments/environment';
 import { Router } from '@angular/router';
-import { Observable, of } from 'rxjs';
+import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -36,7 +36,8 @@ export class UserService {
           return data;
         }),
         catchError(error => {
-          return Observable.throw(new Error("something wrong"));
+          // return Observable.throw(new Error("something wrong"));
+          return throwError(error);
         }));
   }
 

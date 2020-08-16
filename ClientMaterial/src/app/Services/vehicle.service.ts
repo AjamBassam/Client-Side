@@ -2,7 +2,7 @@ import { IVehicle } from 'src/app/models/vehicleModel';
 import { Injectable } from '@angular/core';
 import { RestApiService } from './restApi.service';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 
 @Injectable({
@@ -33,7 +33,8 @@ export class VehicleService {
           return data;
         }),
         catchError(error => {
-          return Observable.throw(new Error("something wrong"));
+          return throwError(error);
+          // return Observable.throw(new Error("something wrong"));
         }));
   }
 
@@ -45,7 +46,8 @@ export class VehicleService {
           return data;
         }),
         catchError(error => {
-          return Observable.throw(new Error("something wrong"));
+          return throwError(error);
+          // return Observable.throw(new Error("something wrong"));
         }));
   }
 
