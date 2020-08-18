@@ -1,0 +1,47 @@
+<div id="booking" class="section">
+  <div class="section-center">
+    <div class="container">
+        <div class="col-md-12 text-content">
+          <h3>
+            Lorem postelu diyantelo posteloru digantechi pizzaria logicielai hola logicielai hola logicielai hola
+            logicielai hola
+          </h3>
+        </div>
+      <div class="booking-form mx-auto">
+        <form>
+          <div class="row no-margin">
+            <div class="col-md-4">
+              <div class="form-group">
+                <span class="form-label">Where</span>
+                <input #search class="form-control" type="text" placeholder="City, address, airport, hotel"
+                  autocorrect="off" autocapitalize="off" spellcheck="off" required>
+              </div>
+            </div>
+            <div class="col-md-7">
+              <div class="row no-margin">
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">From</span>
+                    <input class="form-control" type="date" required>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="form-group">
+                    <span class="form-label">Until</span>
+                    <input class="form-control" type="date" required>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-1">
+              <div class="form-btn">
+                <button class="submit-btn" (click)="searchVehicles()"><i class="fa fa-search"></i></button>
+                <!-- <button class="submit-btn"><i class="fa fa-search"></i></button> -->
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

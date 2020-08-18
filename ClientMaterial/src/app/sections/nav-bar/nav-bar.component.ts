@@ -5,11 +5,11 @@ import { UserService } from 'src/app/Services/user.service';
 import { env } from 'src/environments/environment';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-nav-bar',
+  templateUrl: './nav-bar.component.html',
+  styleUrls: ['./nav-bar.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class NavBarComponent implements OnInit {
 
   public user: IUser = User;
 
