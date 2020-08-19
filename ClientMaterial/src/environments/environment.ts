@@ -49,7 +49,8 @@ export const env = {
   CITY: "location",
   LAT: "latitude",
   LNG: "longitude",
-  DATE_RANGE: "date-range",
+  START_DATE: "startDate",
+  END_DATE: " endDate",
   ID: "id",
   // post
   USER: "user",

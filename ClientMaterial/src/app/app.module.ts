@@ -54,7 +54,7 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BsDatepickerModule.forRoot(),
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
     WebsocketService, RestApiService, UserService, VehicleService, LocationService,
     UserResolve, VehicleRentalsResolve, VehicleResolve,
     AccessGuard, AvoidAccessGuard,

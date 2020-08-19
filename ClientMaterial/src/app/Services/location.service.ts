@@ -10,6 +10,7 @@ export class LocationService {
 
   public latitude: number;
   public longitude: number;
+  public formattedAddress = "";
 
   constructor(
     private mapsAPILoader: MapsAPILoader,
@@ -26,6 +27,8 @@ export class LocationService {
           if (place.geometry === undefined || place.geometry === null) {
             return;
           }
+
+          this.formattedAddress = place.formatted_address;
 
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
@@ -51,9 +54,20 @@ export class LocationService {
     return this.longitude;
   }
 
+  public setLat(lat: number): void {
+    this.latitude = lat;
+  }
+
+  public setLng(lng: number): void {
+    this.longitude = lng;
+  }
+
+  public getFormattedAddress(): string {
+    return this.formattedAddress;
+  }
 
 
-    // getAddress(latitude, longitude): void {
+  // getAddress(latitude, longitude): void {
   //   this.geoCoder.geocode({ location: { lat: latitude, lng: longitude } }, (results, status) => {
   //     // console.log(results);
   //     // console.log(status);

@@ -42,7 +42,7 @@ const routes: Routes = [
 
 
   {
-    path: `${env.VEHICLE_RENTALS.en}/:${env.LAT}/:${env.LNG}/:${env.DATE_RANGE}`,
+    path: `${env.VEHICLE_RENTALS.en}/:${env.LAT}/:${env.LNG}/:${env.START_DATE}/:${env.END_DATE}`,
     component: VehicleRentalsComponent,
     resolve: { user: UserResolve, vehicleList: VehicleRentalsResolve }
   },

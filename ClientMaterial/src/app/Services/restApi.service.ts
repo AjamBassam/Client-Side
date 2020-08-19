@@ -49,7 +49,9 @@ export class RestApiService {
 
   get_getVehicleRentals(route: ActivatedRouteSnapshot): Observable<IVehicle> {
     return this.http.get<IVehicle>
-      (env.SERVER_URL + "/" + env.VEHICLE_RENTALS.en + "/" + route.paramMap.get(env.DATE_RANGE), { withCredentials: true });
+      (env.SERVER_URL + "/" + env.VEHICLE_RENTALS.en + "/" +
+       route.paramMap.get(env.LAT) + "/" + route.paramMap.get(env.LNG) + "/" +
+       route.paramMap.get(env.START_DATE) + "/" + route.paramMap.get(env.END_DATE), { withCredentials: true });
   }
 
   get_getVehicle(route: ActivatedRouteSnapshot): Observable<IVehicle> {
