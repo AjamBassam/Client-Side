@@ -50,8 +50,8 @@ export class RestApiService {
   get_getVehicleRentals(route: ActivatedRouteSnapshot): Observable<IVehicle> {
     return this.http.get<IVehicle>
       (env.SERVER_URL + "/" + env.VEHICLE_RENTALS.en + "/" +
-       route.paramMap.get(env.LAT) + "/" + route.paramMap.get(env.LNG) + "/" +
-       route.paramMap.get(env.START_DATE) + "/" + route.paramMap.get(env.END_DATE), { withCredentials: true });
+        route.paramMap.get(env.LAT) + "/" + route.paramMap.get(env.LNG) + "/" +
+        route.paramMap.get(env.START_DATE) + "/" + route.paramMap.get(env.END_DATE), { withCredentials: true });
   }
 
   get_getVehicle(route: ActivatedRouteSnapshot): Observable<IVehicle> {
@@ -66,4 +66,11 @@ export class RestApiService {
   post_updateFavoriteList(vehicleId: string): Observable<any> {
     return this.http.post<any>(env.SERVER_URL + "/" + env.FAVORITES.en, { _id: vehicleId }, { withCredentials: true });
   }
+
+  // async post_updateFavoriteList(vehicleId: string) {
+  //   const c =
+  // await this.http.post<any>(env.SERVER_URL + "/" + env.FAVORITES.en, { _id: vehicleId }, { withCredentials: true }).toPromise();
+  //   console.log(c);
+  //   return c;
+  // }
 }

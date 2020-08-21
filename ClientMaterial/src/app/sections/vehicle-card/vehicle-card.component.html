@@ -2,7 +2,10 @@
   <div class="card">
     <img src="../../../assets/kawasaki.jpg" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">{{ vehicle.location }}</h5>
+      <h5 class="card-title">{{ vehicle._id }}</h5>
+      <div *ngIf="!vehicle._id">
+          <h5 class="card-title" >id: {{ vehicle }}</h5>
+      </div>
       <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
       <a (click)="updateFavoriteList()" class="card-link" role="button">{{ favorite }}</a>
       <a (click)="goToVehicleProfile()" class="card-link" role="button">More details</a>

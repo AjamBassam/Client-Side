@@ -3,6 +3,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { env } from 'src/environments/environment';
+import { IUser } from '../models/userModel';
 
 @Component({
   selector: 'app-vehicle-rentals',
@@ -23,6 +24,7 @@ export class VehicleRentalsComponent implements OnInit {
     this.vehicleList = this.route.snapshot.data.vehicleList;
 
     this.getInputLocation();
+    console.log("basam")
   }
 
   public getInputLocation(): void {

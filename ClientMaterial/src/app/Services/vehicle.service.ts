@@ -2,15 +2,19 @@ import { IVehicle } from 'src/app/models/vehicleModel';
 import { Injectable } from '@angular/core';
 import { RestApiService } from './restApi.service';
 import { Router, ActivatedRouteSnapshot } from '@angular/router';
-import { Observable, throwError } from 'rxjs';
+import { Observable, throwError, of } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { User } from '../models/userModel';
+import { UserService } from './user.service';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { LoginComponent } from '../login/login.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class VehicleService {
 
-  constructor(private restApiService: RestApiService, private router: Router) { }
+  constructor(private restApiService: RestApiService) { }
 
   public listYourVehicle(vehicle: IVehicle): void {
     this.restApiService.post_listYourVehicle(vehicle)
@@ -51,14 +55,8 @@ export class VehicleService {
         }));
   }
 
-  public updateFavoriteList(vehicleId: string): void {
-    this.restApiService.post_updateFavoriteList(vehicleId)
-      .subscribe((data) => {
-        if (data.msg === true) {
-          // this.favorite = "unfav";
-        } else {
-          // this.favorite = "fav";
-        }
-      });
+  public updateFavoriteList(vehicleId: string): Observable<any> {
+    return this.restApiService.post_updateFavoriteList(vehicleId);
   }
+
 }

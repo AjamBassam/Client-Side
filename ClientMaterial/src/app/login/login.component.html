@@ -8,14 +8,19 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <div class="modal-body">
       <div class="form-group">
-        <input class="form-control" formControlName="email" placeholder="Email" name="email">
+        <input #emailInput class="form-control" formControlName="email" placeholder="Email" name="email">
       </div>
       <div class="form-group">
         <input class="form-control" formControlName="password" placeholder="Password" name="password" type="password">
       </div>
+      <div class="form-group">
+        <input type="checkbox" id="rememberMeId" aria-label="Checkbox for following text input">
+        <label class="form-check-label" for="rememberMeId" class="ml-2">Remember me</label>
+      </div>
+      <a href="#" class="" (click)="forgetPassword()">Forget password</a>
     </div>
     <div class="modal-footer">
-      <a class="nav-link" style="cursor: pointer" (click)="openRegisterModal()">Register</a>
+      <a class="nav-link" role="button" (click)="openRegisterModal()">Register</a>
       <button type="submit" class="btn btn-primary">Login</button>
     </div>
   </form>

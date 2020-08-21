@@ -1,23 +1,19 @@
-import { UserService } from 'src/app/Services/user.service';
+import { RulesService } from './../../Services/rules.service';
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
-import { Observable, of } from 'rxjs';
-import { User, IUser } from 'src/app/models/userModel';
-import { RestApiService } from 'src/app/Services/restApi.service';
-import { env } from 'src/environments/environment';
-import { map, catchError } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccessGuard implements CanActivate {
 
-  constructor(private userService: UserService, private restApiService: RestApiService) { }
+  constructor(private rulesService: RulesService) { }
 
   canActivate(
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean> {
-    return this.userService.getAccess();
+    return this.rulesService.getAccess();
   }
 }
 
@@ -26,10 +22,10 @@ export class AccessGuard implements CanActivate {
 })
 export class AvoidAccessGuard implements CanActivate {
 
-  constructor(private userService: UserService) { }
+  constructor(private rulesService: RulesService) { }
 
   canActivate(): Observable<boolean> {
-    return this.userService.avoidAccess();
+    return this.rulesService.avoidAccess();
   }
 }
 

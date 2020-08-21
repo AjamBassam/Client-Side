@@ -1,3 +1,4 @@
+import { LoginComponent } from './../../login/login.component';
 import { RegisterComponent } from './../../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
@@ -20,11 +21,15 @@ export class NavBarComponent implements OnInit {
   }
 
   public openRegisterModal(): void {
-    this.modalService.open(RegisterComponent);
+    this.modalService.open(RegisterComponent, {
+      centered: true,
+    });
   }
 
   public openLoginModal(): void {
-    this.modalService.open(RegisterComponent);
+    this.modalService.open(LoginComponent, {
+      centered: true,
+    });
   }
 
   public listYourVehicle(): void {

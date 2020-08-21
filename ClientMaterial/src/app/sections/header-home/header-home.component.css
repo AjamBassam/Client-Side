@@ -10,6 +10,7 @@
 
 @media only screen and (min-width: 768px) {
 	.title {
+		line-height: 1.6;
 		font-size: 40px;
 		font-weight: 600;
 		margin-bottom: 150px;
@@ -137,7 +138,6 @@
 }
 
 .booking-form .submit-btn {
-	background: #2466d6;
 	color: #fff;
 	border: none;
 	text-transform: capitalize;

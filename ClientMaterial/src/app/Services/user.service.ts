@@ -1,4 +1,4 @@
-import { RegisterComponent } from './../register/register.component';
+import { LoginComponent } from './../login/login.component';
 import { RestApiService } from './restApi.service';
 import { Injectable } from '@angular/core';
 import { User, IUser } from '../models/userModel';
@@ -6,7 +6,7 @@ import { env } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Injectable({
@@ -14,7 +14,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UserService {
   private modals: any[] = [];
-  constructor(private restApiService: RestApiService, private router: Router) { }
+  constructor(private restApiService: RestApiService, private router: Router, public activeModal: NgbActiveModal) { }
 
   public setUser(user: IUser): void {
     User._id = user._id;
@@ -44,35 +44,6 @@ export class UserService {
         }));
   }
 
-
-  public getAccess(): Observable<boolean> {
-    return this.restApiService.post_getUser({}).pipe(
-      map(data => {
-        if (data._id !== undefined) {
-          this.setUser(data);
-          console.log(User);
-          return true;
-        } else {
-          alert("login first");
-          return false;
-        }
-      }),
-      catchError(error => {
-        return of(false);
-      }));
-  }
-
-  public avoidAccess(): Observable<boolean> {
-    return this.restApiService.post_getUser({}).pipe(
-      map(data => {
-        return data._id === undefined;
-      }),
-      catchError(error => {
-        return of(false);
-      }));
-  }
-
-
   public register(user: IUser): void {
     this.restApiService.post_register(user)
       .subscribe(
@@ -90,7 +61,12 @@ export class UserService {
     this.restApiService.post_login(user)
       .subscribe(
         () => {
-          document.location.href = env.CLIENT_URL;
+          console.log("bassam")
+          // document.location.href = env.CLIENT_URL;
+          this.activeModal.close();
+          // window.location.hash = "#" + this.router.url;
+          // window.location.href = this.router.url;
+          console.log("ajam")
         },
         err => {
           console.log(err.error.msg);

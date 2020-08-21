@@ -17,19 +17,20 @@ import { RestApiService } from "./Services/restApi.service";
 import { WebsocketService } from "./services/websocket.service";
 import { UserService } from "./Services/user.service";
 import { VehicleService } from "./Services/vehicle.service";
+import { RulesService } from "./Services/rules.service";
 
 import { NavBarComponent } from './sections/nav-bar/nav-bar.component';
 import { FooterComponent } from './sections/footer/footer.component';
 import { VehicleCardComponent } from './sections/vehicle-card/vehicle-card.component';
 import { HeaderHomeComponent } from './sections/header-home/header-home.component';
 import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
 
 import { UserResolve } from './controllers/resolvers/user.resolve';
 import { VehicleRentalsResolve } from './controllers/resolvers/vehicleRentals.resolve';
 import { VehicleResolve } from './controllers/resolvers/vehicle.resolve';
 import { AvoidAccessGuard, AccessGuard } from "./controllers/guards/access.guard";
 
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
 
 
 @NgModule({
@@ -40,9 +41,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HeaderHomeComponent,
     FooterComponent,
     VehicleCardComponent,
-    RegisterComponent
+    RegisterComponent,
+    LoginComponent
   ],
-  entryComponents:[
+  entryComponents: [
     RegisterComponent
   ],
   imports: [
@@ -56,12 +58,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVpUD1_ReqVZ-lkUq-Nv7gNtShEF5Oraw',
       libraries: ['places']
-    }),
-    BsDatepickerModule.forRoot(),
+    })
   ],
   providers: [
-    { provide: LocationStrategy, useClass: HashLocationStrategy },
-    WebsocketService, RestApiService, UserService, VehicleService, LocationService,
+    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    WebsocketService, RestApiService, UserService, VehicleService, LocationService, RulesService,
     UserResolve, VehicleRentalsResolve, VehicleResolve,
     AccessGuard, AvoidAccessGuard,
     NgbActiveModal

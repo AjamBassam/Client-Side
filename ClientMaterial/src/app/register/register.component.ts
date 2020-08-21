@@ -1,10 +1,9 @@
-import { LoginComponent } from './../login/login.component';
 import { Component, OnInit, Input, ViewChild, ElementRef } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../Services/user.service';
 import { IUser } from "../models/userModel";
-import { IVehicle } from '../models/vehicleModel';
-import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+// import { LoginComponent } from './../login/login.component';
 
 @Component({
   selector: 'app-register',
@@ -13,29 +12,23 @@ import { NgbModal, ModalDismissReasons, NgbActiveModal } from '@ng-bootstrap/ng-
 })
 export class RegisterComponent implements OnInit {
 
-  registerForm: FormGroup = new FormGroup({
+  @ViewChild('emailInput', { static: true }) public elem: ElementRef;
+
+  public registerForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, Validators.required),
     firstname: new FormControl(null, Validators.required),
     lastName: new FormControl(null, Validators.required),
   });
 
-  @Input() fromParent;
-
-  constructor(private userService: UserService, public activeModal: NgbActiveModal, private modalService: NgbModal) { }
-
+  constructor(private userService: UserService,
+              public activeModal: NgbActiveModal,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
-    console.log(this.fromParent);
-  }
-
-  public openLoginModal(): void {
-    this.activeModal.close();
-    this.modalService.open(LoginComponent);
-  }
-
-  closeRegisterModal(): void {
-    this.activeModal.close();
+    setTimeout(() => {
+      this.elem.nativeElement.focus();
+    }, 0);
   }
 
   public register(): void {
@@ -52,5 +45,14 @@ export class RegisterComponent implements OnInit {
     };
 
     this.userService.register(user);
+  }
+
+  public openLoginModal(): void {
+    this.activeModal.close();
+    // this.modalService.open(LoginComponent, { centered: true, });
+  }
+
+  closeRegisterModal(): void {
+    this.activeModal.close();
   }
 }

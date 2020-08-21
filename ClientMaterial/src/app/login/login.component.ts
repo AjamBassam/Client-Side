@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { UserService } from 'src/app/Services/user.service';
 import { IUser, User } from "../models/userModel";
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -12,23 +12,21 @@ import { RegisterComponent } from '../register/register.component';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm: FormGroup = new FormGroup({
+  @ViewChild('emailInput', { static: true }) public elem: ElementRef;
+
+  public loginForm: FormGroup = new FormGroup({
     email: new FormControl(null, [Validators.required]),
     password: new FormControl(null, [Validators.required])
   });
 
-  constructor(private userService: UserService, public activeModal: NgbActiveModal, private modalService: NgbModal) { }
+  constructor(private userService: UserService,
+              private activeModal: NgbActiveModal,
+              private modalService: NgbModal) { }
 
   ngOnInit(): void {
-  }
-
-  public openRegisterModal(): void {
-    this.activeModal.close();
-    const modalRef = this.modalService.open(RegisterComponent);
-  }
-
-  public closeLoginModal(): void {
-    this.activeModal.close();
+    setTimeout(() => {
+      this.elem.nativeElement.focus();
+    }, 0);
   }
 
   public login(): void {
@@ -45,4 +43,20 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(user);
   }
+
+  public forgetPassword(): void {
+
+  }
+
+  public openRegisterModal(): void {
+    this.activeModal.close();
+    this.modalService.open(RegisterComponent, {
+      centered: true,
+    });
+  }
+
+  public closeLoginModal(): void {
+    this.activeModal.close();
+  }
+
 }
