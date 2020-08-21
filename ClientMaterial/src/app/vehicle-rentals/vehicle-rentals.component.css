@@ -1,3 +1,19 @@
+@media only screen and (max-width: 767px) {
+	agm-map {
+    display: none;
+	}
+}
+
 agm-map {
-  height: 600px;
+  height: 90vh;
+}
+
+.vehicles-list{
+  height:90vh ;
+  overflow-y: scroll;
+}
+
+::-webkit-scrollbar {
+    width: 0px;
+    background: transparent; /* make scrollbar transparent */
 }

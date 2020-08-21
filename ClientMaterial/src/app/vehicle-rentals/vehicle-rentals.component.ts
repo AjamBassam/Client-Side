@@ -13,7 +13,7 @@ export class VehicleRentalsComponent implements OnInit {
 
   public vehicleList: IVehicle[] = [];
   public location: ILocation = { latitude: null, longitude: null };
-  zoom = 14;
+  zoom = env.ZOOM;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 

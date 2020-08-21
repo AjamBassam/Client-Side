@@ -7,7 +7,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
 
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { MaterialModule } from './controllers/material.module';
@@ -22,6 +22,7 @@ import { NavBarComponent } from './sections/nav-bar/nav-bar.component';
 import { FooterComponent } from './sections/footer/footer.component';
 import { VehicleCardComponent } from './sections/vehicle-card/vehicle-card.component';
 import { HeaderHomeComponent } from './sections/header-home/header-home.component';
+import { RegisterComponent } from './register/register.component';
 
 import { UserResolve } from './controllers/resolvers/user.resolve';
 import { VehicleRentalsResolve } from './controllers/resolvers/vehicleRentals.resolve';
@@ -29,6 +30,7 @@ import { VehicleResolve } from './controllers/resolvers/vehicle.resolve';
 import { AvoidAccessGuard, AccessGuard } from "./controllers/guards/access.guard";
 
 import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+
 
 @NgModule({
   declarations: [
@@ -38,6 +40,10 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     HeaderHomeComponent,
     FooterComponent,
     VehicleCardComponent,
+    RegisterComponent
+  ],
+  entryComponents:[
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -54,10 +60,11 @@ import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
     BsDatepickerModule.forRoot(),
   ],
   providers: [
-    // { provide: LocationStrategy, useClass: HashLocationStrategy },
+    { provide: LocationStrategy, useClass: HashLocationStrategy },
     WebsocketService, RestApiService, UserService, VehicleService, LocationService,
     UserResolve, VehicleRentalsResolve, VehicleResolve,
     AccessGuard, AvoidAccessGuard,
+    NgbActiveModal
   ],
   bootstrap: [AppComponent]
 })

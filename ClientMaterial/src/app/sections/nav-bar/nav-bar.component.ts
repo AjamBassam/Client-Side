@@ -1,8 +1,10 @@
+import { RegisterComponent } from './../../register/register.component';
 import { Router, ActivatedRoute } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { IUser, User } from 'src/app/models/userModel';
 import { UserService } from 'src/app/Services/user.service';
 import { env } from 'src/environments/environment';
+import { NgbModal, ModalDismissReasons } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-nav-bar',
@@ -12,12 +14,20 @@ import { env } from 'src/environments/environment';
 export class NavBarComponent implements OnInit {
 
   public user: IUser = User;
+  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute, private modalService: NgbModal) { }
 
-  constructor(private userService: UserService, private router: Router, private route: ActivatedRoute) { }
+  ngOnInit(): void {
+  }
 
-  ngOnInit(): void { }
+  public openRegisterModal(): void {
+    this.modalService.open(RegisterComponent);
+  }
 
-  public listYourVehicle(): void{
+  public openLoginModal(): void {
+    this.modalService.open(RegisterComponent);
+  }
+
+  public listYourVehicle(): void {
     // this.router.navigate([env.LIST_YOUR_VEHICLE.en], {relativeTo: this.route});
   }
 

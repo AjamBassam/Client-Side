@@ -1,33 +1,52 @@
-<a class="nav-link" data-toggle="modal" data-target="#loginPopUp" style="cursor: pointer">Login</a>
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title" id="exampleModalLongTitle">Welcome To</h1>
+    <button type="button" class="close" (click)="closeLoginModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
+    <div class="modal-body">
+      <div class="form-group">
+        <input class="form-control" formControlName="email" placeholder="Email" name="email">
+      </div>
+      <div class="form-group">
+        <input class="form-control" formControlName="password" placeholder="Password" name="password" type="password">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <a class="nav-link" style="cursor: pointer" (click)="openRegisterModal()">Register</a>
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </form>
+</div>
+
+<!-- <a class="nav-link" data-toggle="modal" data-target="#loginPopUp" style="cursor: pointer">Login</a>
 
 <div class="modal fade" id="loginPopUp" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
   aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+        <h1 class="modal-title" id="exampleModalLongTitle">Welcome Back</h1>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-        <form>
+      <form [formGroup]="loginForm" (ngSubmit)="login()">
+        <div class="modal-body">
           <div class="form-group">
-            <input [(ngModel)]="email" class="form-control" placeholder="Email" name="email">
+            <input class="form-control" formControlName="email" placeholder="Email" name="email">
           </div>
           <div class="form-group">
-            <input [(ngModel)]="password" class="form-control" placeholder="Password" name="password" type="password">
+            <input class="form-control" formControlName="password" placeholder="Password" name="password" type="password">
           </div>
-          <div class="form-group">
-            <button type="button" class="btn btn-secondary mr-1" routerLink="/register">Register</button>
-            <button type="button" class="btn btn-dark" (click)="login()">Login</button>
-          </div>
-        </form>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
-      </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-secondary">Login</button>
+          <button type="submit" class="btn btn-primary">Login</button>
+        </div>
+      </form>
     </div>
   </div>
-</div>
+</div> -->

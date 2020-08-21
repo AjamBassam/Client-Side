@@ -13,14 +13,12 @@ import { formatDate } from '@angular/common';
 })
 export class HeaderHomeComponent implements OnInit {
   @ViewChild('searchInput', { static: true }) public searchElementRef: ElementRef;
-  
+
   searchForm: FormGroup = new FormGroup({
     location: new FormControl(null, [Validators.required]),
     startDate: new FormControl(this.setStartDate(), [Validators.required]),
     endDate: new FormControl(this.setEndDate(), [Validators.required])
   });
-  
-  dt;
 
   constructor(
     private router: Router,
@@ -33,6 +31,11 @@ export class HeaderHomeComponent implements OnInit {
   }
 
   onFormSubmit(): void {
+    if (!this.searchForm.valid) {
+      console.log('Invalid');
+      return;
+    }
+
     if (this.locationService.getLat() != null) {
       this.router.navigate([
         env.VEHICLE_RENTALS.en,

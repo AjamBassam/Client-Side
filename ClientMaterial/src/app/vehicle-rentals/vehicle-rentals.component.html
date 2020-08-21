@@ -1,27 +1,35 @@
-<div class="container" *ngFor="let v of vehicleList">
+<div class="container-fluid">
   <div class="row">
-    <app-vehicle-card [vehicle]="v"></app-vehicle-card>
+
+    <div class="col-md-7">
+      <div class="vehicles-list">
+        <div class="row row-cols-1 row-cols-md-2">
+          <div *ngFor="let v of vehicleList">
+            <app-vehicle-card [vehicle]="v"></app-vehicle-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="zoom">
+        <!-- (centerChange)='onClick($event)'> -->
+        <agm-marker [latitude]="location.latitude" [longitude]="location.longitude">
+          <agm-info-window>
+            <h3>YOU</h3>
+            <p>YOU'RE HERE</p>
+          </agm-info-window>
+        </agm-marker>
+
+        <agm-marker *ngFor="let v of vehicleList" [latitude]="v.location.latitude" [longitude]="v.location.longitude"
+          [iconUrl]="'http://labs.google.com/ridefinder/images/mm_20_purple.png'">
+          <agm-info-window>
+            <h3>{{ v._id }}</h3>
+            <p>{{ v.location.latitude }} : {{ v.location.longitude }}</p>
+          </agm-info-window>
+        </agm-marker>
+      </agm-map>
+    </div>
+
   </div>
-</div>
-<br>
-
-<div class="container">
-  <h1>Angular Google Maps with Places Search Example</h1>
-  <agm-map [latitude]="location.latitude" [longitude]="location.longitude" [zoom]="zoom">
-    <!-- (centerChange)='onClick($event)'> -->
-    <agm-marker [latitude]="location.latitude" [longitude]="location.longitude">
-      <agm-info-window>
-        <h3>YOU</h3>
-        <p>YOU'RE HERE</p>
-      </agm-info-window>
-    </agm-marker>
-
-    <agm-marker *ngFor="let v of vehicleList" [latitude]="v.location.latitude" [longitude]="v.location.longitude"
-      [iconUrl]="'http://labs.google.com/ridefinder/images/mm_20_purple.png'">
-      <agm-info-window>
-        <h3>{{ v._id }}</h3>
-        <p>{{ v.location.latitude }} : {{ v.location.longitude }}</p>
-      </agm-info-window>
-    </agm-marker>
-  </agm-map>
 </div>

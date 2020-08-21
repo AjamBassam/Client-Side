@@ -56,6 +56,8 @@ export const env = {
   USER: "user",
   LOGOUT: "logout",
   DELETE: "delete",
+
+  ZOOM: 14
 };
 
 /*

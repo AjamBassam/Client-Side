@@ -1,3 +1,4 @@
+import { RegisterComponent } from './../register/register.component';
 import { RestApiService } from './restApi.service';
 import { Injectable } from '@angular/core';
 import { User, IUser } from '../models/userModel';
@@ -5,12 +6,14 @@ import { env } from 'src/environments/environment';
 import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
-
+  private modals: any[] = [];
   constructor(private restApiService: RestApiService, private router: Router) { }
 
   public setUser(user: IUser): void {
@@ -118,8 +121,6 @@ export class UserService {
           console.log(err);
         });
   }
-
-
 
 
 

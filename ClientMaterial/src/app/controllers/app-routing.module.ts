@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from "../page-not-found/page-not-found.componen
 import { UserProfileComponent } from "../user-profile/user-profile.component";
 import { VehicleRentalsComponent } from "../vehicle-rentals/vehicle-rentals.component";
 import { VehicleComponent } from "../vehicle/vehicle.component";
-import { RegisterComponent } from '../register/register.component';
+// import { RegisterComponent } from '../register/register.component';
 import { LoginComponent } from '../login/login.component';
 import { ListYourVehicleComponent } from '../list-your-vehicle/list-your-vehicle.component';
 import { FavoriteComponent } from '../favorite/favorite.component';
@@ -24,11 +24,11 @@ const routes: Routes = [
     path: "", component: HomeComponent,
     resolve: { user: UserResolve }
   },
-  {
-    path: env.REGISTER.en,
-    component: RegisterComponent,
-    canActivate: [AvoidAccessGuard],
-  },
+  // {
+  //   path: env.REGISTER.en,
+  //   component: RegisterComponent,
+  //   canActivate: [AvoidAccessGuard],
+  // },
   {
     path: env.LOGIN.en,
     component: LoginComponent,
@@ -82,7 +82,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   HomeComponent,
   HomeContentComponent,
-  RegisterComponent,
   LoginComponent,
   ListYourVehicleComponent,
   VehicleRentalsComponent,
