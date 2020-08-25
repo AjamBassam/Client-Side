@@ -1,22 +1,29 @@
-<div class="row mx-1 my-3">
-  <div class="col-12">
-    <form>
-      <div class="form-group">
-        <input [(ngModel)]="email" class="form-control" placeholder="Email" name="email">
-      </div>
-      <div class="form-group">
-        <input [(ngModel)]="password" class="form-control" placeholder="Password" name="password" type="password">
-      </div>
-      <div class="form-group">
-        <input [(ngModel)]="firstName" class="form-control" placeholder="First Name" name="firstName">
-      </div>
-      <div class="form-group">
-        <input [(ngModel)]="lastName" class="form-control" placeholder="Last Name" name="lastName">
-      </div>
-      <div class="form-group">
-        <button type="button" class="btn btn-secondary mr-1" routerLink="/login">Log in</button>
-        <button type="button" class="btn btn-dark" (click)="register()">Register</button>
-      </div>
-    </form>
+
+<div class="modal-content">
+  <div class="modal-header">
+    <h1 class="modal-title" id="exampleModalLongTitle">Welcome To</h1>
+    <button type="button" class="close" (click)="closeRegisterModal()">
+      <span aria-hidden="true">&times;</span>
+    </button>
   </div>
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="modal-body">
+      <div class="form-group">
+        <input #emailInput class="form-control" placeholder="Email" formControlName="email" name="email">
+      </div>
+      <div class="form-group">
+        <input class="form-control" placeholder="Password" formControlName="password" name="password" type="password">
+      </div>
+      <div class="form-group">
+        <input class="form-control" placeholder="First Name" formControlName="firstName" name="firstName">
+      </div>
+      <div class="form-group">
+        <input class="form-control" placeholder="Last Name" formControlName="lastName" name="lastName">
+      </div>
+    </div>
+    <div class="modal-footer">
+      <!-- <a class="nav-link" role="button" (click)="openLoginModal()">Login</a> -->
+      <button type="submit" class="btn btn-primary">Register</button>
+    </div>
+  </form>
 </div>

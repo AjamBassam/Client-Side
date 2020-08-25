@@ -1,3 +1,13 @@
-<div *ngFor="let v of favoriteList" style="float: left;">
-  <app-vehicle-card [vehicle]="v"></app-vehicle-card>
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="vehicles-list">
+        <div class="row row-cols-1 row-cols-md-2">
+          <div *ngFor="let v of favoriteList">
+            <app-vehicle-card-two [vehicle]="v"></app-vehicle-card-two>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>

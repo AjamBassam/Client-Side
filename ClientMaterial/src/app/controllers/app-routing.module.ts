@@ -6,8 +6,6 @@ import { PageNotFoundComponent } from "../page-not-found/page-not-found.componen
 import { UserProfileComponent } from "../user-profile/user-profile.component";
 import { VehicleRentalsComponent } from "../vehicle-rentals/vehicle-rentals.component";
 import { VehicleComponent } from "../vehicle/vehicle.component";
-import { RegisterComponent } from '../register/register.component';
-import { LoginComponent } from '../login/login.component';
 import { ListYourVehicleComponent } from '../list-your-vehicle/list-your-vehicle.component';
 import { FavoriteComponent } from '../favorite/favorite.component';
 import { AccountComponent } from '../account/account.component';
@@ -25,16 +23,6 @@ const routes: Routes = [
     resolve: { user: UserResolve }
   },
   {
-    path: env.REGISTER.en,
-    component: RegisterComponent,
-    canActivate: [AvoidAccessGuard],
-  },
-  {
-    path: env.LOGIN.en,
-    component: LoginComponent,
-    canActivate: [AvoidAccessGuard],
-  },
-  {
     path: env.LIST_YOUR_VEHICLE.en,
     component: ListYourVehicleComponent,
     canActivate: [AccessGuard],
@@ -42,7 +30,7 @@ const routes: Routes = [
 
 
   {
-    path: `${env.VEHICLE_RENTALS.en}/:${env.LAT}/:${env.LNG}/:${env.DATE_RANGE}`,
+    path: `${env.VEHICLE_RENTALS.en}/:${env.LAT}/:${env.LNG}/:${env.START_DATE}/:${env.END_DATE}`,
     component: VehicleRentalsComponent,
     resolve: { user: UserResolve, vehicleList: VehicleRentalsResolve }
   },
@@ -82,8 +70,6 @@ export class AppRoutingModule { }
 export const routingComponents = [
   HomeComponent,
   HomeContentComponent,
-  RegisterComponent,
-  LoginComponent,
   ListYourVehicleComponent,
   VehicleRentalsComponent,
   VehicleComponent,

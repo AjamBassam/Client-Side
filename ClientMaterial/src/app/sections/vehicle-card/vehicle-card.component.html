@@ -1,10 +1,15 @@
-<div class="card float-left mx-3" style="width: 18rem;">
-  <img src="../../../assets/kawasaki.jpg" class="card-img-top" alt="...">
-  <div class="card-body">
-    <h5 class="card-title">{{ vehicle.location }}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
-    </p>
-    <a (click)="updateFavoriteList()" class="card-link" role="button">{{ favorite }}</a>
-    <a (click)="goToVehicleProfile()" class="card-link" role="button">More details</a>
+<div class="col mb-4">
+  <div class="card">
+    <div style="transform: rotate(0);">
+      <img src="../../../assets/kawasaki.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{ vehicle._id }}</h5>
+        <a (click)="goToVehicleProfile()" role="button" class="stretched-link">Info about the vehicle</a>
+      </div>
+    </div>
+    <div *ngIf="onMap" class="card-footer">
+      <a (click)="updateFavoriteList()" class="card-link" role="button"
+        style="position: relative;">{{ favorite }}</a>
+    </div>
   </div>
 </div>

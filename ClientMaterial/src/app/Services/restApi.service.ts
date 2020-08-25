@@ -1,9 +1,9 @@
+import { IVehicle } from 'src/app/models/vehicleModel';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { delay, map, catchError } from "rxjs/operators";
 import { env } from 'src/environments/environment';
-import { IVehicle } from '../models/vehicleModel';
 import { ActivatedRouteSnapshot } from '@angular/router';
 import { IUser, User } from '../models/userModel';
 
@@ -47,21 +47,29 @@ export class RestApiService {
 
   // ----------------------------------------------------------------------------------------------
 
-  get_getVehicleRentals(route: ActivatedRouteSnapshot): Observable<IVehicle> {
+  get_getVehicleRentals(lat, lng, startDate, endDate): Observable<IVehicle> {
     return this.http.get<IVehicle>
-      (env.SERVER_URL + "/" + env.VEHICLE_RENTALS.en + "/" + route.paramMap.get(env.DATE_RANGE), { withCredentials: true });
+      (env.SERVER_URL + "/" + env.VEHICLE_RENTALS.en + "/" +
+        lat + "/" + lng + "/" + startDate + "/" + endDate, { withCredentials: true });
   }
 
-  get_getVehicle(route: ActivatedRouteSnapshot): Observable<IVehicle> {
+  get_getVehicle(id: string): Observable<IVehicle> {
     return this.http.get<IVehicle>
-      (env.SERVER_URL + "/" + env.VEHICLE.en + "/" + route.paramMap.get(env.ID), { withCredentials: true });
+      (env.SERVER_URL + "/" + env.VEHICLE.en + "/" + id, { withCredentials: true });
   }
 
   post_listYourVehicle(data: IVehicle): Observable<IVehicle> {
     return this.http.post<IVehicle>(env.SERVER_URL + "/" + env.LIST_YOUR_VEHICLE.en, data, { withCredentials: true });
   }
 
-  post_updateFavoriteList(vehicleId: string): Observable<any> {
-    return this.http.post<any>(env.SERVER_URL + "/" + env.FAVORITES.en, { _id: vehicleId }, { withCredentials: true });
+  post_updateFavoriteList(v: IVehicle): Observable<any> {
+    return this.http.post<any>(env.SERVER_URL + "/" + env.FAVORITES.en, { vehicle: v }, { withCredentials: true });
   }
+
+  // async post_updateFavoriteList(vehicleId: string) {
+  //   const c =
+  // await this.http.post<any>(env.SERVER_URL + "/" + env.FAVORITES.en, { _id: vehicleId }, { withCredentials: true }).toPromise();
+  //   console.log(c);
+  //   return c;
+  // }
 }

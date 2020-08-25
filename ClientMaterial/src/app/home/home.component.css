@@ -1,0 +1,19 @@
+header.cover-photo {
+  position: relative;
+  background-color: #737a82;
+  background-image: url("../../assets/img/bg-masthead.jpg");
+  background-size: cover;
+  padding-top: 5rem;
+  padding-bottom: 15rem;
+}
+
+@media (min-width: 768px) {
+  header.cover-photo {
+    padding-top: 12rem;
+    padding-bottom: 12rem;
+  }
+  header.cover-photo h1 {
+    font-size: 3rem;
+  }
+}
+

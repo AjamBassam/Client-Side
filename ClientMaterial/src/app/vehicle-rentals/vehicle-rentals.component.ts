@@ -3,6 +3,7 @@ import { UserService } from 'src/app/Services/user.service';
 import { Component, OnInit, EventEmitter } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { env } from 'src/environments/environment';
+import { IUser } from '../models/userModel';
 
 @Component({
   selector: 'app-vehicle-rentals',
@@ -13,7 +14,7 @@ export class VehicleRentalsComponent implements OnInit {
 
   public vehicleList: IVehicle[] = [];
   public location: ILocation = { latitude: null, longitude: null };
-  zoom = 14;
+  zoom = env.ZOOM;
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 

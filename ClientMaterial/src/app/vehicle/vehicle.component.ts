@@ -19,6 +19,5 @@ export class VehicleComponent implements OnInit {
     const user = this.route.snapshot.data.user;
     this.userService.setUser(user);
     const vehicle = this.route.snapshot.data.vehicle;
-    console.log(vehicle);
   }
 }
