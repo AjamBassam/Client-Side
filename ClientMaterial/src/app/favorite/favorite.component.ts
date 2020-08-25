@@ -1,3 +1,4 @@
+import { IVehicle } from 'src/app/models/vehicleModel';
 import { UserService } from 'src/app/Services/user.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
@@ -10,7 +11,7 @@ import { User } from '../models/userModel';
 })
 export class FavoriteComponent implements OnInit {
 
-  public favoriteList: string[] = [];
+  public favoriteList: IVehicle[] = [];
 
   constructor(private route: ActivatedRoute, private userService: UserService) { }
 

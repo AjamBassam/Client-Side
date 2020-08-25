@@ -24,7 +24,6 @@ export class VehicleRentalsComponent implements OnInit {
     this.vehicleList = this.route.snapshot.data.vehicleList;
 
     this.getInputLocation();
-    console.log("basam")
   }
 
   public getInputLocation(): void {

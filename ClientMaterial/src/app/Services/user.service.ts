@@ -49,7 +49,7 @@ export class UserService {
       .subscribe(
         (data) => {
           console.log(data);
-          this.router.navigate(["/login"]);
+          this.router.navigate(["/"]);
         },
         err => {
           console.log(err.error.msg);
@@ -61,12 +61,7 @@ export class UserService {
     this.restApiService.post_login(user)
       .subscribe(
         () => {
-          console.log("bassam")
-          // document.location.href = env.CLIENT_URL;
-          this.activeModal.close();
-          // window.location.hash = "#" + this.router.url;
-          // window.location.href = this.router.url;
-          console.log("ajam")
+          document.location.href = env.CLIENT_URL + this.router.url;
         },
         err => {
           console.log(err.error.msg);

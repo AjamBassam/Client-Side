@@ -30,7 +30,6 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-
     if (!this.loginForm.valid) {
       console.log('Invalid');
       return;

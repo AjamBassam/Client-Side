@@ -1,23 +1,16 @@
 <div class="row mx-1 my-3">
   <div class="col-12">
-    <form>
-      <!-- <div class="form-group">
-        <input [(ngModel)]="location" class="form-control" placeholder="location" name="location" >
-      </div> -->
-
-      <input type="text" class="form-control" placeholder="Search Location"
-      autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
-
+    <form [formGroup]="listYourVehicleForm" (ngSubmit)="listYourVehicle()">
       <div class="form-group">
-        <input [(ngModel)]="date" class="form-control" placeholder="date" name="date">
+        <input type="text" class="form-control" formControlName="location" name="location" placeholder="Search Location" autocorrect="off" autocapitalize="off"
+          spellcheck="off" type="text" #search>
       </div>
       <div class="form-group">
-        <input [(ngModel)]="price" class="form-control" placeholder="price" name="price">
+        <input class="form-control" type="date" formControlName="date" name="date" placeholder="Start date" required>
       </div>
       <div class="form-group">
-        <button type="button" class="btn btn-dark" (click)="listYourVehicle()">Register</button>
+        <button type="submit" class="submit-btn btn btn-primary">List your vehicle</button>
       </div>
-
     </form>
   </div>
 </div>

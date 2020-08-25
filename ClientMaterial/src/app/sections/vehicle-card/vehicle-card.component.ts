@@ -1,13 +1,11 @@
-import { VehicleService } from 'src/app/Services/vehicle.service';
-import { LoginComponent } from './../../login/login.component';
-import { RestApiService } from 'src/app/Services/restApi.service';
+import { IVehicle } from 'src/app/models/vehicleModel';
 import { Router } from '@angular/router';
 import { Component, OnInit, Input } from '@angular/core';
-import { IVehicle } from 'src/app/models/vehicleModel';
-import { User } from 'src/app/models/userModel';
-import { UserService } from 'src/app/Services/user.service';
-import { env } from 'src/environments/environment';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { User } from 'src/app/models/userModel';
+import { env } from 'src/environments/environment';
+import { LoginComponent } from './../../login/login.component';
+import { VehicleService } from 'src/app/Services/vehicle.service';
 
 @Component({
   selector: 'app-vehicle-card',
@@ -17,9 +15,10 @@ import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class VehicleCardComponent implements OnInit {
 
   @Input() public vehicle: IVehicle;
+  @Input() public onMap: boolean;
   public isFavorited = false;
 
-  public favorite = "Add to favorite list";
+  public favorite: string;
 
   constructor(
     private vehicleService: VehicleService,
@@ -29,16 +28,21 @@ export class VehicleCardComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    console.log(this.vehicle)
-
     this.initialize();
   }
 
   public initialize(): void {
-    if (User.favorites !== undefined) {
-      if (User._id) {
-        if (User.favorites.indexOf(this.vehicle._id) > -1) {
-          this.favorite = "Remove from favorite list";
+
+    console.log("bassam")
+    if (User.favorites === undefined || User.favorites.length === 0) {
+      this.favorite = "dd to favorite list";
+    } else {
+      for (const v of User.favorites) {
+        if (this.vehicle._id === v._id) {
+          this.favorite = "remove from favorite list";
+          break;
+        } else {
+          this.favorite = "add to favorite list";
         }
       }
     }
@@ -48,16 +52,18 @@ export class VehicleCardComponent implements OnInit {
     if (!User._id) {
       this.openLoginModal();
     } else {
-      this.vehicleService.updateFavoriteList(User._id)
-        .subscribe((data) => {
-          if (data.msg === true) {
-            console.log("add to favorite list");
-            this.favorite = "add to favorite list";
+      this.vehicleService.updateFavoriteList(this.vehicle).subscribe(
+        (data) => {
+          if (data.msg === "removed") {
+            this.favorite = "Add to favorite list";
           } else {
-            console.log("remove frome favorite list")
-            this.favorite = "remove frome favorite list";
+            this.favorite = "Remove from favorite list";
           }
-        });
+        },
+        err => {
+          console.log(err.error.msg);
+        }
+      );
     }
   }
 
@@ -66,7 +72,7 @@ export class VehicleCardComponent implements OnInit {
   }
 
   public openLoginModal(): void {
-    alert("login firsttt");
+    alert("Login first please!");
     this.activeModal.close();
     this.modalService.open(LoginComponent, {
       centered: true,
@@ -74,3 +80,10 @@ export class VehicleCardComponent implements OnInit {
   }
 
 }
+
+
+// if (User.favorites.indexOf(this.vehicle._id) > -1) {
+//   this.favorite = "Remove from favorite list";
+// } else {
+//   this.favorite = "Add to favorite list";
+// }

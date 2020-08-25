@@ -20,9 +20,10 @@ import { VehicleService } from "./Services/vehicle.service";
 import { RulesService } from "./Services/rules.service";
 
 import { NavBarComponent } from './sections/nav-bar/nav-bar.component';
+import { HeaderHomeComponent } from './sections/header-home/header-home.component';
 import { FooterComponent } from './sections/footer/footer.component';
 import { VehicleCardComponent } from './sections/vehicle-card/vehicle-card.component';
-import { HeaderHomeComponent } from './sections/header-home/header-home.component';
+import { VehicleCardTwoComponent } from './sections/vehicle-card-two/vehicle-card-two.component';
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 
@@ -42,7 +43,8 @@ import { AvoidAccessGuard, AccessGuard } from "./controllers/guards/access.guard
     FooterComponent,
     VehicleCardComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    VehicleCardTwoComponent
   ],
   entryComponents: [
     RegisterComponent

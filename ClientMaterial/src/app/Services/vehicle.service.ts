@@ -29,8 +29,8 @@ export class VehicleService {
       );
   }
 
-  public getVehicleRentals(route: ActivatedRouteSnapshot): Observable<IVehicle> {
-    return this.restApiService.get_getVehicleRentals(route)
+  public getVehicleRentals(lat, lng, startDate, endDate): Observable<IVehicle> {
+    return this.restApiService.get_getVehicleRentals(lat, lng, startDate, endDate)
       .pipe(
         map(data => {
           console.log(data);
@@ -42,8 +42,9 @@ export class VehicleService {
         }));
   }
 
-  public getVehicle(route: ActivatedRouteSnapshot): Observable<IVehicle> {
-    return this.restApiService.get_getVehicle(route)
+  public getVehicle(id: string): Observable<IVehicle> {
+    console.log(id)
+    return this.restApiService.get_getVehicle(id)
       .pipe(
         map(data => {
           console.log(data);
@@ -55,8 +56,8 @@ export class VehicleService {
         }));
   }
 
-  public updateFavoriteList(vehicleId: string): Observable<any> {
-    return this.restApiService.post_updateFavoriteList(vehicleId);
+  public updateFavoriteList(vehicle: IVehicle): Observable<any> {
+    return this.restApiService.post_updateFavoriteList(vehicle);
   }
 
 }

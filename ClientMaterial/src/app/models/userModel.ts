@@ -1,3 +1,4 @@
+import { IVehicle } from 'src/app/models/vehicleModel';
 export class UserModel {
   _id?: string = undefined;
   email: string = undefined;
@@ -6,7 +7,7 @@ export class UserModel {
   lastName?: string = undefined;
   connected?: boolean = undefined;
   profilePic?: string = undefined;
-  favorites?: string[] = undefined;
+  favorites?: IVehicle[] = undefined;
   msg?: string | boolean = undefined;
 }
 
