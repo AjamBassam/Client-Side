@@ -45,6 +45,10 @@ export class RestApiService {
     return this.http.post<any>(env.SERVER_URL + "/" + env.ACCOUNT.en + "/" + env.DELETE, data, { withCredentials: true });
   }
 
+  post_socialLogin(data: object): Observable<IUser> {
+    return this.http.post<IUser>(env.SERVER_URL + "/" + env.SOCIAL_LOGIN.en, data, { withCredentials: true });
+  }
+
   // ----------------------------------------------------------------------------------------------
 
   get_getVehicleRentals(lat, lng, startDate, endDate): Observable<IVehicle> {

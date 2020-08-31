@@ -3,7 +3,8 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { UserService } from '../Services/user.service';
 import { IUser } from "../models/userModel";
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
-// import { LoginComponent } from './../login/login.component';
+import { SocialAuthService } from "angularx-social-login";
+import { FacebookLoginProvider, GoogleLoginProvider } from "angularx-social-login";
 
 @Component({
   selector: 'app-register',
@@ -23,12 +24,17 @@ export class RegisterComponent implements OnInit {
 
   constructor(private userService: UserService,
               public activeModal: NgbActiveModal,
-              private modalService: NgbModal) { }
+              private modalService: NgbModal,
+              private socialAuthService: SocialAuthService) { }
 
   ngOnInit(): void {
     setTimeout(() => {
       this.elem.nativeElement.focus();
     }, 0);
+  }
+
+  signUpWithGoogle(): void {
+    this.userService.socialLogin(GoogleLoginProvider.PROVIDER_ID);
   }
 
   public register(): void {

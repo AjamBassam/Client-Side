@@ -6,6 +6,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from "@angular/common/http";
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { SocialLoginModule, SocialAuthServiceConfig } from 'angularx-social-login';
+import { GoogleLoginProvider, FacebookLoginProvider, AmazonLoginProvider } from 'angularx-social-login';
 
 import { NgbModule, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -60,14 +62,29 @@ import { AvoidAccessGuard, AccessGuard } from "./controllers/guards/access.guard
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyBVpUD1_ReqVZ-lkUq-Nv7gNtShEF5Oraw',
       libraries: ['places']
-    })
+    }),
+    SocialLoginModule
   ],
   providers: [
     // { provide: LocationStrategy, useClass: HashLocationStrategy },
     WebsocketService, RestApiService, UserService, VehicleService, LocationService, RulesService,
     UserResolve, VehicleRentalsResolve, VehicleResolve,
     AccessGuard, AvoidAccessGuard,
-    NgbActiveModal
+    NgbActiveModal,
+    {
+      provide: 'SocialAuthServiceConfig',
+      useValue: {
+        autoLogin: false,
+        providers: [
+          {
+            id: GoogleLoginProvider.PROVIDER_ID,
+            provider: new GoogleLoginProvider(
+              '242345312971-1gu3tmpfo0v12fs17adef2fbstv1chf9.apps.googleusercontent.com'
+            ),
+          }
+        ],
+      } as SocialAuthServiceConfig,
+    }
   ],
   bootstrap: [AppComponent]
 })

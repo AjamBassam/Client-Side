@@ -33,16 +33,15 @@ export class VehicleCardComponent implements OnInit {
 
   public initialize(): void {
 
-    console.log("bassam")
     if (User.favorites === undefined || User.favorites.length === 0) {
-      this.favorite = "dd to favorite list";
+      this.favorite = "Add to favorite list";
     } else {
       for (const v of User.favorites) {
         if (this.vehicle._id === v._id) {
-          this.favorite = "remove from favorite list";
+          this.favorite = "Remove from favorite list";
           break;
         } else {
-          this.favorite = "add to favorite list";
+          this.favorite = "Add to favorite list";
         }
       }
     }

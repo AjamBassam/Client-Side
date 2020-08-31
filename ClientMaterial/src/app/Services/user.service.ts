@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { Observable, of, throwError } from 'rxjs';
 import { map, catchError } from 'rxjs/operators';
 import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { SocialAuthService } from "angularx-social-login";
 
 
 @Injectable({
@@ -14,7 +15,9 @@ import { NgbModal, NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class UserService {
   private modals: any[] = [];
-  constructor(private restApiService: RestApiService, private router: Router, public activeModal: NgbActiveModal) { }
+  constructor(
+    private restApiService: RestApiService, private router: Router,
+    public activeModal: NgbActiveModal, private socialAuthService: SocialAuthService) { }
 
   public setUser(user: IUser): void {
     User._id = user._id;
@@ -67,6 +70,23 @@ export class UserService {
           console.log(err.error.msg);
         }
       );
+  }
+
+  public socialLogin(socialPlatformProvider: any): void {
+    this.socialAuthService.signIn(socialPlatformProvider)
+      .then((userData) => {
+        console.log(userData);
+
+        this.restApiService.post_socialLogin({ idToken: userData.idToken})
+          .subscribe(
+            () => {
+              document.location.href = env.CLIENT_URL + this.router.url;
+            },
+            (err) => {
+              console.log(err.error.msg);
+            }
+          );
+      });
   }
 
   public logout(): void {
