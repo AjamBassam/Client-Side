@@ -44,6 +44,10 @@ export const env = {
     en: "user-profile",
     fr: "profile-utilisateur"
   },
+  SOCIAL_LOGIN: {
+    en: "social-login",
+    fr: ""
+  },
 
   // parameters
   CITY: "location",
